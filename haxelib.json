@@ -7,5 +7,5 @@
   "version": "0.1.0",
   "releasenote": "First release",
   "contributors": [ "steverichey", "joonturbo" ],
-  "dependencies": { /* OpenFL is required, but don't want to force downloads */ }
+  "dependencies": {  }
 }
