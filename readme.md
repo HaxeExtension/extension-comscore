@@ -25,7 +25,7 @@ Don't forget to add the following line to your `Project.xml`:
 
 Then you can call comScore methods pretty easily:
 
-	import extension.comscore;
+	import extension.comscore.ComScore;
 
 	...
 
