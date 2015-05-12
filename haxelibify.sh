@@ -5,6 +5,6 @@ set -e
 
 # create haxelib archive
 # (don't include copyrighted files)
-zip -vr comscore.zip ./* -x "*.DS_Store" "*.a" "/native/iphone/include/*.h" "*.o"
+zip -vr comscore.zip ./* -x "*.DS_Store" "*.a" "/native/iphone/include/*.h" "*.o" "test/*"
 
 # update haxelib?
