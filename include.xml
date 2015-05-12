@@ -6,4 +6,5 @@
     <dependency path="native/libs/libcomScore.a" if="ios" />
     <!-- Required by comScore -->
     <dependency name="Security.framework" if="ios" />
+    <dependency name="SystemConfiguration.framework" if="ios" />
 </project>
