@@ -5,7 +5,7 @@ import extension.comscore;
 
 class Main extends Sprite
 {
-	private static inline EXAMPLE_VALUE:String = "EXAMPLE_VALUE";
+	private static inline var EXAMPLE_VALUE:String = "EXAMPLE_VALUE";
 
 	public function new()
 	{
