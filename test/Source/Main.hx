@@ -1,7 +1,7 @@
 package;
 
 import openfl.display.Sprite;
-import extension.comscore;
+import extension.comscore.ComScore;
 
 class Main extends Sprite
 {
