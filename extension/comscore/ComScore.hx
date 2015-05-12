@@ -1,6 +1,10 @@
 package extension.comscore;
 
+#if !lime_legacy
+import lime.system.System;
+#else
 import openfl.Lib;
+#end
 
 class ComScore
 {
@@ -91,11 +95,20 @@ class ComScore
     }
 
     #if ios
+    #if (!lime_legacy)
+    private static var openflcomscore_setcustomerc2      = System.load("openflcomscore", "openflcomscore_setcustomerc2", 1);
+    private static var openflcomscore_setpublishersecret = System.load("openflcomscore", "openflcomscore_setpublishersecret", 1);
+    private static var openflcomscore_setappcontext      = System.load("openflcomscore", "openflcomscore_setappcontext", 0);
+    private static var openflcomscore_onuxactive         = System.load("openflcomscore", "openflcomscore_onuxactive", 0);
+    private static var openflcomscore_onuxinactive       = System.load("openflcomscore", "openflcomscore_onuxinactive", 0);
+    private static var openflcomscore_enableautoupdate   = System.load("openflcomscore", "openflcomscore_enableautoupdate", 2);
+    #else
     private static var openflcomscore_setcustomerc2      = Lib.load("openflcomscore", "openflcomscore_setcustomerc2", 1);
     private static var openflcomscore_setpublishersecret = Lib.load("openflcomscore", "openflcomscore_setpublishersecret", 1);
     private static var openflcomscore_setappcontext      = Lib.load("openflcomscore", "openflcomscore_setappcontext", 0);
     private static var openflcomscore_onuxactive         = Lib.load("openflcomscore", "openflcomscore_onuxactive", 0);
     private static var openflcomscore_onuxinactive       = Lib.load("openflcomscore", "openflcomscore_onuxinactive", 0);
     private static var openflcomscore_enableautoupdate   = Lib.load("openflcomscore", "openflcomscore_enableautoupdate", 2);
+    #end
     #end
 }
