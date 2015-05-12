@@ -7,7 +7,7 @@ set -e
 sh rebuild.sh
 
 # build for legacy code
-lime test ./test/Project.xml ios -clean -verbose -Dlegacy
+lime build ./test/Project.xml ios -clean -verbose -Dlegacy
 
 # build for new codebase
-lime test ./test/Project.xml ios -clean -verbose
+lime build ./test/Project.xml ios -clean -verbose
