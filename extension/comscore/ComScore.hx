@@ -42,6 +42,34 @@ class ComScore
     }
 
     /**
+     * If your application provides a user experience – like the playback of 
+     * music or video – then please implement this and onUxInactive.
+     *
+     * This API method needs to be called whenever your application starts 
+     * providing the user experience (i.e., audio and/or video).
+     */
+    public static function onUxActive():Void
+    {
+        #if ios
+        openflcomscore_onuxactive();
+        #end
+    }
+
+    /**
+     * If your application provides a user experience – like the playback of 
+     * music or video – then please implement this and onUxActive.
+     *
+     * This API method needs to be called whenever your application stops 
+     * providing the user experience.
+     */
+    public static function onUxInactive():Void
+    {
+        #if ios
+        openflcomscore_onuxinactive();
+        #end
+    }
+
+    /**
      * The comScore library contains an auto-update feature that will update
      * the application usage times on regular intervals. This feature is
      * turned off by default.
@@ -63,9 +91,11 @@ class ComScore
     }
 
     #if ios
-    private static var openflcomscore_setcustomerc2 =      Lib.load("openflcomscore", "openflcomscore_setcustomerc2", 1);
+    private static var openflcomscore_setcustomerc2      = Lib.load("openflcomscore", "openflcomscore_setcustomerc2", 1);
     private static var openflcomscore_setpublishersecret = Lib.load("openflcomscore", "openflcomscore_setpublishersecret", 1);
-    private static var openflcomscore_setappcontext =      Lib.load("openflcomscore", "openflcomscore_setappcontext", 0);
-    private static var openflcomscore_enableautoupdate =   Lib.load("openflcomscore", "openflcomscore_enableautoupdate", 2);
+    private static var openflcomscore_setappcontext      = Lib.load("openflcomscore", "openflcomscore_setappcontext", 0);
+    private static var openflcomscore_onuxactive         = Lib.load("openflcomscore", "openflcomscore_onuxactive", 0);
+    private static var openflcomscore_onuxinactive       = Lib.load("openflcomscore", "openflcomscore_onuxinactive", 0);
+    private static var openflcomscore_enableautoupdate   = Lib.load("openflcomscore", "openflcomscore_enableautoupdate", 2);
     #end
 }
