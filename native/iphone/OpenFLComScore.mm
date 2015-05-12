@@ -13,6 +13,8 @@ namespace openflcomscore
 	void setPublisherSecret(const char* secret);
 	void setAppContext();
 	void enableAutoUpdate(const int interval, const bool foregroundOnly);
+	void onUxActive();
+	void onUxInactive();
 
 	void setCustomerC2(const char* clientid)
 	{
@@ -37,5 +39,15 @@ namespace openflcomscore
 	void enableAutoUpdate(const int interval, const bool foregroundOnly)
 	{
 		[CSComScore enableAutoUpdate:interval foregroundOnly:foregroundOnly];
+	}
+
+	void onUxActive()
+	{
+		[CSComScore onUxActive];
+	}
+
+	void onUxInactive()
+	{
+		[CSComScore onUxInactive];
 	}
 }

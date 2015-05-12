@@ -51,6 +51,24 @@ static value openflcomscore_enableautoupdate(value interval, value foregroundOnl
 }
 DEFINE_PRIM (openflcomscore_enableautoupdate, 2);
 
+static value openflcomscore_onuxactive()
+{
+	#ifdef IPHONE
+	onUxActive();
+	#endif
+	return alloc_null();
+}
+DEFINE_PRIM (openflcomscore_onuxactive, 0);
+
+static value openflcomscore_onuxinactive()
+{
+	#ifdef IPHONE
+	onUxInactive();
+	#endif
+	return alloc_null();
+}
+DEFINE_PRIM (openflcomscore_onuxinactive, 0);
+
 extern "C" void openflcomscore_main()
 {	
 	val_int(0);

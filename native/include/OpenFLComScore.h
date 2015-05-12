@@ -7,6 +7,8 @@ namespace openflcomscore
 	void setPublisherSecret(const char* secret);
 	void setAppContext();
 	void enableAutoUpdate(const int interval, const bool foregroundOnly);
+	void onUxActive();
+	void onUxInactive();
 }
 
 #endif
