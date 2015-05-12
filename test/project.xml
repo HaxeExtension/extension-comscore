@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="ExtensionTest" package="org.openfl.extensiontest" version="0.1.0" company="OpenFL" />
+	<app main="Main" path="Export" file="ExtensionTest" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+	<haxelib name="comscore" />
+	
+</project>

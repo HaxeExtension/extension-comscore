@@ -3,3 +3,4 @@ native/obj/*
 native/libs/*
 native/iphone/include/*
 ndll/*
+test/Export/*
