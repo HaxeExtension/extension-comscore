@@ -1,0 +1,11 @@
+{
+  "name": "comscore",
+  "url": "http://www.openfl.org",
+  "license": "MIT",
+  "tags": [ "openfl", "extension" ],
+  "description": "Adds iOS ComScore support",
+  "version": "0.1.0",
+  "releasenote": "First release",
+  "contributors": [ "steverichey", "joonturbo" ],
+  "dependencies": { /* OpenFL is required, but don't want to force downloads */ }
+}
