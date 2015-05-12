@@ -1,10 +1,14 @@
-# comScore
+# extension-comscore
 
 Provides access to [comScore](http://www.comscore.com/) Analytics library on iOS. Currently, Android is not supported.
 
 # Installation
 
-This library is not currently available on Haxelib, so for now install with:
+This library is available on Haxelib, so install with:
+
+    haxelib install comscore
+
+If you want to install the development version you can:
 
     haxelib git comscore https://github.com/steverichey/comscore
 
@@ -29,4 +33,4 @@ Then you can call comScore methods pretty easily:
 
 # License
 
-All code in this repository &copy; 2015 [Steve Richey](https://github.com/steverichey) is shared under an [MIT license](https://tldrlegal.com/license/mit-license). See [license.md](./license.md) for details. All code in the comScore SDK is &copy; 2014 comScore, Inc.
+All code in this repository is &copy; 2015 [Steve Richey](https://github.com/steverichey) and [joon](https://github.com/joonjoonjoon) and is shared under an [MIT license](https://tldrlegal.com/license/mit-license). See [license.md](./license.md) for details. All code in the comScore SDK is &copy; 2014 comScore, Inc.

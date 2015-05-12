@@ -6,6 +6,6 @@
   "description": "Adds iOS ComScore support",
   "version": "0.1.0",
   "releasenote": "First release",
-  "contributors": [ "steverichey", "joonturbo" ],
+  "contributors": [ "steverichey" ],
   "dependencies": {  }
 }
