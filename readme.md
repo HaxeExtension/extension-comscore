@@ -10,7 +10,7 @@ This library is available on Haxelib, so install with:
 
 If you want to install the development version you can:
 
-    haxelib git comscore https://github.com/steverichey/comscore
+    haxelib git comscore https://github.com/openfl/extension-comscore.git
 
 You also need to include the following files from the comScore SDK manually, as they are copyrighted.
 
