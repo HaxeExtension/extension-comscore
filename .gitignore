@@ -4,3 +4,4 @@ native/libs/*
 native/iphone/include/*
 ndll/*
 test/Export/*
+*.zip
