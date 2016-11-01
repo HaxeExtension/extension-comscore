@@ -1,7 +1,6 @@
 .DS_Store
-native/obj/*
-native/libs/*
-native/iphone/include/*
+project/obj/*
+project/libs/*
 ndll/*
 test/Export/*
 *.zip
