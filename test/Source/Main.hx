@@ -5,15 +5,12 @@ import openfl.events.Event;
 
 #if android
 import org.openfl.extension.comscore.android.ExtensionComScore;
-#else if ios
+#elseif ios
 import org.openfl.extension.comscore.ios.ComScoreCFFI;
 #end
 
 class Main extends Sprite
 {
-	private static inline var CUSTOMER_C2:String = "23004024";
-	private static inline var PUBLISHER_SECRET:String = "f614d7b7e768166a01bbf96615782c92";
-
 	private static inline var CUSTOMER_C2:String = "23004024";
 	private static inline var PUBLISHER_SECRET:String = "f614d7b7e768166a01bbf96615782c92";
 
@@ -32,24 +29,23 @@ class Main extends Sprite
 
 		trace("comScore enableAutoUpdate: "+1+ "," +true);
 		ExtensionComScore.enableAutoUpdate(1, true);
-
-		stage.addEventListener(Event.DEACTIVATE, pause);
-		stage.addEventListener(Event.ACTIVATE, resume);
 		
-		#else if ios
+		#elseif ios
 		
 		ComScoreCFFI.init(CUSTOMER_C2, PUBLISHER_SECRET);
 		ComScoreCFFI.onEnterForeground();
 
-		ComScoreCFFI.onExitForeground();
 		#end
+
+		stage.addEventListener(Event.DEACTIVATE, pause);
+		stage.addEventListener(Event.ACTIVATE, resume);
 	}
 
 	private function pause(event:Event):Void {
 		trace("App pause");
 		#if android
 		ExtensionComScore.onExitForeground();
-		#else
+		#elseif ios
 		ComScoreCFFI.onExitForeground();
 		#end
 	}
@@ -58,7 +54,7 @@ class Main extends Sprite
 		trace("App resume");
 		#if android
 		ExtensionComScore.onEnterForeground();
-		#else
+		#elseif ios
 		ComScoreCFFI.onEnterForeground();
 		#end
 	}

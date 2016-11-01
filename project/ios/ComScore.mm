@@ -21,7 +21,6 @@ namespace extension_comscore
 		[[SCORAnalytics configuration] addClientWithConfiguration:myPublisherConfig];
 
 		[SCORAnalytics start];
-		NSLog(@"init %@ %@", _clientId, _publisherSecret);
 	}
 
 	void enableAutoUpdate(const int interval, const bool foregroundOnly) {
@@ -37,17 +36,14 @@ namespace extension_comscore
 		}];
 
 		[[SCORAnalytics configuration] addClientWithConfiguration:newConfiguration];
-		NSLog(@"enableAutoUpdate");
 	}
 	
 	void onExitForeground() {
 		[SCORAnalytics notifyExitForeground];
-		NSLog(@"onExitForeground");
 	}
 
 	void onEnterForeground() {
 		[SCORAnalytics notifyEnterForeground];
-		NSLog(@"onEnterForeground");
 	}
 	
 }
