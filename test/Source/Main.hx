@@ -29,8 +29,6 @@ class Main extends Sprite
 			ComScore.onUxInactive();
 			ComScore.enableAutoUpdate();
 		#elseif android
-			stage.addEventListener(Event.DEACTIVATE, pause);
-			stage.addEventListener(Event.ACTIVATE, resume);
 			addEventListener(Event.ADDED_TO_STAGE, addedToStage);
 		#end
 
@@ -42,6 +40,9 @@ class Main extends Sprite
 
 		trace("comScore enableAutoUpdate: "+1+ "," +true);
 		ExtensionComScore.enableAutoUpdate(1, true);
+
+		stage.addEventListener(Event.DEACTIVATE, pause);
+		stage.addEventListener(Event.ACTIVATE, resume);
 	}
 
 	private function pause(event:Event):Void {
