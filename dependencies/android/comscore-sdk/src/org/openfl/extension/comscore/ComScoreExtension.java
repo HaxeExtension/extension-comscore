@@ -6,7 +6,7 @@ import android.util.Log;
 import org.haxe.extension.Extension;
 import com.comscore.analytics.comScore;
 
-public class ExtensionComScore extends Extension {
+public class ComScoreExtension extends Extension {
 
     public static void setCustomerC2(final String clientID) {
         mainActivity.runOnUiThread(new Runnable() {

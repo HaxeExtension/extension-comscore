@@ -3,7 +3,7 @@ package org.openfl.extension.comscore.android;
 import openfl.utils.JNI;
 
 @:build(ShortCuts.mirrors())
-class ExtensionComScore {
+class ComScoreExtension {
 
     public static function init(customerId:String, publisherSecret:String):Void {
         setAppContext();

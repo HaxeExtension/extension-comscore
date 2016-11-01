@@ -5,7 +5,7 @@
 
     <section if="android">
 		<dependency name="comscore-sdk" path="dependencies/android/comscore-sdk" />
-		<android extension="org.openfl.extension.comscore.ExtensionComScore" />
+		<android extension="org.openfl.extension.comscore.ComScoreExtension" />
 	</section>
     
     <section if="ios">
