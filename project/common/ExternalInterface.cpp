@@ -7,72 +7,53 @@
 #endif
 
 #include <hx/CFFI.h>
-#include <stdio.h>
 #include <hxcpp.h>
-#include "OpenFLComScore.h"
 
-using namespace openflcomscore;
+#include <stdio.h>
+#include <ComScore.h>
 
-AutoGCRoot* comscoreEventHandle = 0;
+#define safe_alloc_string(a) (alloc_string(a!=NULL ? a : ""))
+#define safe_val_call0(func) if (func!=NULL) val_call0(func->get())
+#define safe_val_call1(func, arg1) if (func!=NULL) val_call1(func->get(), arg1)
+#define safe_val_string(str) str==NULL ? "" : std::string(val_string(str))
 
-static value openflcomscore_setcustomerc2(value clientid) 
-{
-	#ifdef IPHONE
-	setCustomerC2(val_string(clientid));
-	#endif
+static value extension_comscore_init(value clientId, value publisherSecret) {
+	extension_comscore::init(
+		safe_val_string(clientId),
+		safe_val_string(publisherSecret)
+	);
+
 	return alloc_null();
 }
-DEFINE_PRIM (openflcomscore_setcustomerc2, 1);
+DEFINE_PRIM(extension_comscore_init, 2);
 
-static value openflcomscore_setpublishersecret(value secret)
-{
-	#ifdef IPHONE
-	setPublisherSecret(val_string(secret));
-	#endif
+static value extension_comscore_enableAutoUpdate(value interval, value foregroundOnly) {
+	extension_comscore::enableAutoUpdate(
+		val_get_int(interval),
+		val_get_bool(foregroundOnly)
+	);
+
 	return alloc_null();
 }
-DEFINE_PRIM (openflcomscore_setpublishersecret, 1);
+DEFINE_PRIM(extension_comscore_enableAutoUpdate, 2);
 
-static value openflcomscore_setappcontext()
-{
-	#ifdef IPHONE
-	setAppContext();
-	#endif
+static value extension_comscore_onExitForeground() {
+	extension_comscore::onExitForeground();
 	return alloc_null();
 }
-DEFINE_PRIM (openflcomscore_setappcontext, 0);
+DEFINE_PRIM(extension_comscore_onExitForeground, 0);
 
-static value openflcomscore_enableautoupdate(value interval, value foregroundOnly)
-{
-	#ifdef IPHONE
-	enableAutoUpdate(val_int(interval), val_bool(foregroundOnly));
-	#endif
+static value extension_comscore_onEnterForeground() {
+	extension_comscore::onEnterForeground();
 	return alloc_null();
 }
-DEFINE_PRIM (openflcomscore_enableautoupdate, 2);
+DEFINE_PRIM(extension_comscore_onEnterForeground, 0);
 
-static value openflcomscore_onuxactive()
-{
-	#ifdef IPHONE
-	onUxActive();
-	#endif
-	return alloc_null();
+extern "C" void extension_comscore_main() {	
+	val_int(0); // Fix Neko init
 }
-DEFINE_PRIM (openflcomscore_onuxactive, 0);
+DEFINE_ENTRY_POINT (extension_comscore_main);
 
-static value openflcomscore_onuxinactive()
-{
-	#ifdef IPHONE
-	onUxInactive();
-	#endif
-	return alloc_null();
+extern "C" int extension_comscore_register_prims() { 
+	return 0; 
 }
-DEFINE_PRIM (openflcomscore_onuxinactive, 0);
-
-extern "C" void openflcomscore_main()
-{	
-	val_int(0);
-}
-DEFINE_ENTRY_POINT (openflcomscore_main);
-
-extern "C" int openflcomscore_register_prims() { return 0; }

@@ -7,13 +7,19 @@
 		<dependency name="comscore-sdk" path="dependencies/android/comscore-sdk" />
 		<android extension="org.openfl.extension.comscore.ExtensionComScore" />
 	</section>
+    
+    <section if="ios">
+        <!-- Specify the path to the .ndll file -->
+        <ndll name="extension_comscore" />
+        
+        <!-- Required by comScore -->
+        <dependency name="Security.framework" />
+        <dependency name="SystemConfiguration.framework" />
+        <!-- Optional, but suggested by comScore -->
+        <dependency name="AdSupport.framework" />
 
-	<!-- Specify the path to the .ndll file -->
-    <ndll name="openflcomscore" if="ios" />
-    <!-- Add the comScore library to native/libs before building -->
-    <dependency path="native/libs/libcomScore.a" if="ios" />
-    <!-- Required by comScore -->
-    <dependency name="Security.framework" if="ios" />
-    <dependency name="SystemConfiguration.framework" if="ios" />
+        <!-- Add the comScore library to dependencies/ios before building -->
+        <dependency path="dependencies/ios/ComScore.framework" />
+    </section>
 
 </project>
