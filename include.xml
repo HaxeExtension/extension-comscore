@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
+
+    <haxelib name="inthebox-macros" />
+
+    <section if="android">
+		<dependency name="comscore-sdk" path="dependencies/android/comscore-sdk" />
+		<android extension="org.openfl.extension.comscore.ExtensionComScore" />
+	</section>
+
 	<!-- Specify the path to the .ndll file -->
     <ndll name="openflcomscore" if="ios" />
     <!-- Add the comScore library to native/libs before building -->
@@ -7,4 +15,5 @@
     <!-- Required by comScore -->
     <dependency name="Security.framework" if="ios" />
     <dependency name="SystemConfiguration.framework" if="ios" />
+
 </project>
