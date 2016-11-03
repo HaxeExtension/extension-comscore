@@ -34,4 +34,10 @@ class ComScoreExtension {
     @JNI("org.openfl.extension.comscore", "onEnterForeground")
     public static function onEnterForeground():Void {};
 
+    @JNI("org.openfl.extension.comscore", "onUxActive")
+    public static function onUxActive():Void {};
+
+    @JNI("org.openfl.extension.comscore", "onUxInactive")
+    public static function onUxInactive():Void {};
+
 }

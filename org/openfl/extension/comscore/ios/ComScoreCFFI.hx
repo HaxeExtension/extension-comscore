@@ -11,5 +11,9 @@ class ComScoreCFFI {
 
     @CPP public static function onEnterForeground():Void {};
 
+    @CPP public static function onUxActive():Void {};
+
+    @CPP public static function onUxInactive():Void {};
+
 }
 

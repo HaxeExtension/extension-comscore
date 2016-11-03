@@ -61,4 +61,22 @@ public class ComScoreExtension extends Extension {
 			}
 		});
     }
+
+    public static void onUxActive () {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                comScore.onUxActive();
+			}
+		});
+    }
+
+    public static void onUxInactive () {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                comScore.onUxInactive();
+			}
+		});
+    }
 }

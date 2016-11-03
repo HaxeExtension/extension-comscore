@@ -41,6 +41,18 @@ static value extension_comscore_onEnterForeground() {
 }
 DEFINE_PRIM(extension_comscore_onEnterForeground, 0);
 
+static value extension_comscore_onUxActive() {
+	extension_comscore::onUxActive();
+	return alloc_null();
+}
+DEFINE_PRIM(extension_comscore_onUxActive, 0);
+
+static value extension_comscore_onUxInactive() {
+	extension_comscore::onUxInactive();
+	return alloc_null();
+}
+DEFINE_PRIM(extension_comscore_onUxInactive, 0);
+
 extern "C" void extension_comscore_main() {	
 	val_int(0); // Fix Neko init
 }

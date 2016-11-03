@@ -37,4 +37,12 @@ class ComScore {
         ComScoreCFFI.onEnterForeground();
     }
 
+    public function onUxActive():Void {
+        ComScoreCFFI.onUxActive();
+    }
+
+    public function onUxInactive():Void {
+        ComScoreCFFI.onUxInactive();
+    }
+
 }

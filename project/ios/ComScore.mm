@@ -33,4 +33,11 @@ namespace extension_comscore
 		[SCORAnalytics notifyEnterForeground];
 	}
 	
+	void onUxActive() {
+		[SCORAnalytics notifyUxActive];
+	}
+
+	void onUxInactive() {
+		[SCORAnalytics notifyUxInactive];
+	}
 }
