@@ -3,6 +3,8 @@
 	<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
 	
 	<set name="debug_extra" value="-debug" if="fulldebug" />
+
+	<set name="COMSCORE_SDK_DIR" value="../dependencies/ios/"/>
 	
 	<files id="common">
 		
@@ -13,13 +15,16 @@
 	</files>
 	
 	<files id="iphone">
-		<compilerflag value="-IiPhone/include"/>
+		<!-- <compilerflag value="-IiPhone/include"/> -->
 		<compilerflag value="-Iinclude"/>
-		<file name="iphone/OpenFLComScore.mm"/>
+		<compilerflag value="-F${COMSCORE_SDK_DIR}"/>
+		<compilerflag value="-framework"/>
+		<compilerflag value="ComScore"/>
+		<file name="ios/ComScore.mm"/>
 		
 	</files>
 	
-	<target id="NDLL" output="${LIBPREFIX}openflcomscore${debug_extra}${LIBEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
+	<target id="NDLL" output="${LIBPREFIX}extension_comscore${debug_extra}${LIBEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
 		
 		<outdir name="../ndll/${BINDIR}"/>
 		
