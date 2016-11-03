@@ -6,8 +6,7 @@
 namespace extension_comscore
 {
 
-	void init(std::string clientId, std::string publisherSecret);
-	void enableAutoUpdate(const int interval, const bool foregroundOnly);
+	void init(std::string clientId, std::string publisherSecret, const int interval, const bool foregroundOnly);
 	void onExitForeground();
 	void onEnterForeground();
 }

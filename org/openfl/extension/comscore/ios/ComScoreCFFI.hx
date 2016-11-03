@@ -5,9 +5,7 @@ package org.openfl.extension.comscore.ios;
 @CPP_PRIMITIVE_PREFIX("extension_comscore")
 class ComScoreCFFI {
 
-    @CPP public static function init(clientId:String, publisherSecret:String) {}
-
-    @CPP public static function enableAutoUpdate(interval:Int, foregroundOnly:Bool):Void {};
+    @CPP public static function init(clientId:String, publisherSecret:String, interval:Int, foregroundOnly:Bool) {}
 
     @CPP public static function onExitForeground():Void {};
 

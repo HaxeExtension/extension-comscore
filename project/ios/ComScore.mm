@@ -5,37 +5,24 @@
 
 namespace extension_comscore
 {
-	NSString* _clientId;
-	NSString* _publisherSecret;
-
-	void init(std::string clientId, std::string publisherSecret) {
-		_clientId = [[NSString stringWithUTF8String:clientId.c_str()] retain];
-		_publisherSecret = [[NSString stringWithUTF8String:publisherSecret.c_str()] retain];
+	void init(std::string clientId, std::string publisherSecret, const int interval, const bool foregroundOnly) {
+		NSString* _clientId = [NSString stringWithUTF8String:clientId.c_str()];
+		NSString* _publisherSecret = [NSString stringWithUTF8String:publisherSecret.c_str()];
 
 		SCORPublisherConfiguration *myPublisherConfig = [SCORPublisherConfiguration publisherConfigurationWithBuilderBlock:^(SCORPublisherConfigurationBuilder *builder) {
 			builder.publisherId = _clientId;
 			builder.publisherSecret = _publisherSecret;
-			builder.usagePropertiesAutoUpdateMode = SCORUsagePropertiesAutoUpdateModeDisabled;
+			if(interval>0) {
+				builder.usagePropertiesAutoUpdateInterval = interval;
+				builder.usagePropertiesAutoUpdateMode = (foregroundOnly)? SCORUsagePropertiesAutoUpdateModeForegroundOnly: SCORUsagePropertiesAutoUpdateModeForegroundAndBackground;
+			} else {
+				builder.usagePropertiesAutoUpdateMode = SCORUsagePropertiesAutoUpdateModeDisabled;
+			}
 		}];
 
 		[[SCORAnalytics configuration] addClientWithConfiguration:myPublisherConfig];
 
 		[SCORAnalytics start];
-	}
-
-	void enableAutoUpdate(const int interval, const bool foregroundOnly) {
-		//disable tracking for the current configuration 
-		[[SCORAnalytics configuration] disable];
-
-		//create new configuration
-		SCORPublisherConfiguration *newConfiguration = [SCORPublisherConfiguration publisherConfigurationWithBuilderBlock:^(SCORPublisherConfigurationBuilder *builder) {
-			builder.publisherId = _clientId;
-			builder.publisherSecret = _publisherSecret;
-			builder.usagePropertiesAutoUpdateMode = (foregroundOnly)? SCORUsagePropertiesAutoUpdateModeForegroundOnly: SCORUsagePropertiesAutoUpdateModeForegroundAndBackground;
-			builder.usagePropertiesAutoUpdateInterval = (NSInteger)interval;
-		}];
-
-		[[SCORAnalytics configuration] addClientWithConfiguration:newConfiguration];
 	}
 	
 	void onExitForeground() {

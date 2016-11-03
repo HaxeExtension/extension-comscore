@@ -10,6 +10,8 @@ class Main extends Sprite
 	private static inline var CUSTOMER_C2:String = "23004024";
 	private static inline var PUBLISHER_SECRET:String = "f614d7b7e768166a01bbf96615782c92";
 
+	private var comScore:ComScore;
+
 	public function new()
 	{
 		super();
@@ -21,10 +23,9 @@ class Main extends Sprite
 	private function addedToStage(event:Event):Void {
 		
 		trace("Setup comScore: "+CUSTOMER_C2+ "," +PUBLISHER_SECRET);
-		ComScore.init(CUSTOMER_C2, PUBLISHER_SECRET);
-
 		trace("comScore enableAutoUpdate: "+1+ "," +true);
-		ComScore.enableAutoUpdate(1, true);
+
+		comScore = new ComScore(CUSTOMER_C2, PUBLISHER_SECRET, 60, true);
 		
 		stage.addEventListener(Event.DEACTIVATE, pause);
 		stage.addEventListener(Event.ACTIVATE, resume);
@@ -32,11 +33,11 @@ class Main extends Sprite
 
 	private function pause(event:Event):Void {
 		trace("App pause");
-		ComScore.onExitForeground();
+		comScore.onExitForeground();
 	}
 
 	private function resume(event:Event):Void {
 		trace("App resume");
-		ComScore.onEnterForeground();
+		comScore.onEnterForeground();
 	}
 }

@@ -17,25 +17,17 @@
 #define safe_val_call1(func, arg1) if (func!=NULL) val_call1(func->get(), arg1)
 #define safe_val_string(str) str==NULL ? "" : std::string(val_string(str))
 
-static value extension_comscore_init(value clientId, value publisherSecret) {
+static value extension_comscore_init(value clientId, value publisherSecret, value interval, value foregroundOnly) {
 	extension_comscore::init(
 		safe_val_string(clientId),
-		safe_val_string(publisherSecret)
-	);
-
-	return alloc_null();
-}
-DEFINE_PRIM(extension_comscore_init, 2);
-
-static value extension_comscore_enableAutoUpdate(value interval, value foregroundOnly) {
-	extension_comscore::enableAutoUpdate(
+		safe_val_string(publisherSecret),
 		val_get_int(interval),
 		val_get_bool(foregroundOnly)
 	);
 
 	return alloc_null();
 }
-DEFINE_PRIM(extension_comscore_enableAutoUpdate, 2);
+DEFINE_PRIM(extension_comscore_init, 4);
 
 static value extension_comscore_onExitForeground() {
 	extension_comscore::onExitForeground();

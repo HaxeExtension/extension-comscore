@@ -5,12 +5,14 @@ import openfl.utils.JNI;
 @:build(ShortCuts.mirrors())
 class ComScoreExtension {
 
-    public static function init(customerId:String, publisherSecret:String):Void {
+    public static function init(customerId:String, publisherSecret:String, interval:Int, foregroundOnly:Bool):Void {
         setAppContext();
 		
         setCustomerC2(customerId);
 		setPublisherSecret(publisherSecret);
 		
+        enableAutoUpdate(interval, foregroundOnly);
+
         onEnterForeground();
     } 
 
